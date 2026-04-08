@@ -1,0 +1,24 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    string str;
+    cout << "Enter string for greencity.txt: ";
+    getline(cin, str);
+
+    ofstream green("greencity.txt");
+    green << str;
+    green.close();
+
+    reverse(str.begin(), str.end());
+
+    ofstream clean("cleancity.txt");
+    clean << str;
+    clean.close();
+
+    cout << "Reversed content written to cleancity.txt\n";
+    return 0;
+}

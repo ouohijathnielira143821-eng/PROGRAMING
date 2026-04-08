@@ -1,0 +1,23 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    fstream file("example.txt", ios::in | ios::out);
+    if(!file) { cout << "Cannot open file.\n"; return 1; }
+
+    char ch;
+    streampos pos;
+    while(file.get(ch)) {
+        if(ch == 'a') {
+            pos = file.tellg();
+            file.seekp(pos - 1);
+            file.put('x');
+            file.seekg(pos);
+        }
+    }
+
+    file.close();
+    cout << "All 'a' replaced with 'x'.\n";
+    return 0;
+}

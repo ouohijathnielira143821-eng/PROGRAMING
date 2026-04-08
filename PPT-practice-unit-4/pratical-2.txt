@@ -1,0 +1,29 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream inFile("example.txt");
+    if(!inFile) {
+        cout << "Error opening file.\n";
+        return 1;
+    }
+
+    char ch;
+    int chars = 0, blanks = 0, tabs = 0, lines = 0;
+
+    while(inFile.get(ch)) {
+        chars++;
+        if(ch == ' ') blanks++;
+        else if(ch == '\t') tabs++;
+        else if(ch == '\n') lines++;
+    }
+
+    inFile.close();
+    cout << "Characters: " << chars << endl;
+    cout << "Blank spaces: " << blanks << endl;
+    cout << "Tabs: " << tabs << endl;
+    cout << "Lines: " << lines << endl;
+
+    return 0;
+}

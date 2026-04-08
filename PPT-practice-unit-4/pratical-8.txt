@@ -1,0 +1,40 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+struct Employee {
+    int empcode;
+    char empname[50];
+    float salary;
+};
+
+int main() {
+    ofstream outFile("emp.dat", ios::binary | ios::app);
+    int n;
+    cout << "How many employees? ";
+    cin >> n;
+
+    for(int i = 0; i < n; i++) {
+        Employee e;
+        cout << "Enter empcode, empname, salary: ";
+        cin >> e.empcode;
+        cin.ignore();
+        cin.getline(e.empname, 50);
+        cin >> e.salary;
+        outFile.write((char*)&e, sizeof(e));
+    }
+    outFile.close();
+
+    ifstream inFile("emp.dat", ios::binary);
+    Employee e;
+    cout << "\nEmployees in file:\n";
+    while(inFile.read((char*)&e, sizeof(e))) {
+        cout << "Code: " << e.empcode 
+             << ", Name: " << e.empname 
+             << ", Salary: " << e.salary << endl;
+    }
+    inFile.close();
+
+    return 0;
+}

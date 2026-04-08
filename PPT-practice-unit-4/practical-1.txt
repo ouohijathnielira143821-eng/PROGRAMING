@@ -1,0 +1,40 @@
+#include <iostream>
+#include <fstream>  // for file handling
+#include <string>
+using namespace std;
+
+int main() {
+    string filename = "example.txt";
+    string content;
+
+    // --- Write to file ---
+    ofstream outFile(filename);  // open file for writing
+    if(!outFile) {
+        cout << "Error opening file for writing.\n";
+        return 1;
+    }
+
+    cout << "Enter content to write into file (single line): ";
+    getline(cin, content);
+
+    outFile << content;  // write to file
+    outFile.close();     // close file
+
+    cout << "Content written to " << filename << endl;
+
+    // --- Read from file ---
+    ifstream inFile(filename);   // open file for reading
+    if(!inFile) {
+        cout << "Error opening file for reading.\n";
+        return 1;
+    }
+
+    cout << "\nContent of the file:\n";
+    string line;
+    while(getline(inFile, line)) {  // read line by line
+        cout << line << endl;
+    }
+
+    inFile.close();  // close file
+    return 0;
+}

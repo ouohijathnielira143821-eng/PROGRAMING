@@ -1,0 +1,23 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream src("source.txt", ios::in);
+    ofstream dest("destination.txt", ios::out);
+
+    if(!src || !dest) {
+        cout << "Error opening files.\n";
+        return 1;
+    }
+
+    char ch;
+    while(src.get(ch)) {
+        dest.put(ch);
+    }
+
+    src.close();
+    dest.close();
+    cout << "File copied successfully.\n";
+    return 0;
+}

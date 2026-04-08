@@ -1,0 +1,21 @@
+#include <iostream>
+#include <cstdio>
+using namespace std;
+
+int main() {
+    FILE *fp = fopen("example.txt", "r");
+    if(!fp) { cout << "Cannot open file.\n"; return 1; }
+
+    fseek(fp, 0, SEEK_END);
+    long size = ftell(fp);
+    cout << "Size of file using fseek() & ftell(): " << size << " bytes\n";
+
+    rewind(fp);
+    cout << "File pointer rewound to beginning.\n";
+
+    char ch = fgetc(fp);
+    cout << "First character in file: " << ch << endl;
+
+    fclose(fp);
+    return 0;
+}

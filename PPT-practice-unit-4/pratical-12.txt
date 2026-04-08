@@ -1,0 +1,27 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    ofstream outFile("num.txt");
+    string num;
+    cout << "Enter a number: ";
+    cin >> num;
+    outFile << num;
+    outFile.close();
+
+    ifstream inFile("num.txt");
+    inFile >> num;
+    inFile.close();
+
+    reverse(num.begin(), num.end());
+
+    ofstream revFile("revnum.txt");
+    revFile << num;
+    revFile.close();
+
+    cout << "Reversed number written to revnum.txt\n";
+    return 0;
+}

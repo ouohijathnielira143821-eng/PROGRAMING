@@ -1,0 +1,22 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main() {
+    ofstream outFile("example.txt", ios::app); // append mode
+    if(!outFile) {
+        cout << "Error opening file.\n";
+        return 1;
+    }
+
+    string content;
+    cout << "Enter content to append: ";
+    getline(cin, content);
+
+    outFile << "\n" << content;
+    outFile.close();
+    cout << "Content appended successfully.\n";
+
+    return 0;
+}
