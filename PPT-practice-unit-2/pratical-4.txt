@@ -1,0 +1,48 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+struct Student {
+    string name;
+    float score;
+    int year;
+};
+
+// Function to print all student records
+void printStudents(Student s[], int n) {
+    for(int i = 0; i < n; i++) {
+        cout << s[i].name << " | Score: " << s[i].score 
+             << " | Year: " << s[i].year << endl;
+    }
+}
+
+// Comparator function to sort by score descending
+bool compareByScoreDesc(Student a, Student b) {
+    return a.score > b.score;  // Higher scores come first
+}
+
+int main() {
+    Student s[5];
+
+    // Input for 5 students
+    for(int i = 0; i < 5; i++) {
+        cout << "\nEnter details for student " << i + 1 << endl;
+        cout << "Name: ";
+        cin >> s[i].name;
+        cout << "Score: ";
+        cin >> s[i].score;
+        cout << "Joining Year: ";
+        cin >> s[i].year;
+    }
+
+    cout << "\n--- Original Data ---\n";
+    printStudents(s, 5);
+
+    // Sort by score descending
+    sort(s, s + 5, compareByScoreDesc);
+
+    cout << "\n--- Data Sorted by Score (Descending) ---\n";
+    printStudents(s, 5);
+
+    return 0;
+}

@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+struct Student {
+    string name;
+    float score;
+    int year;
+};
+
+int main() {
+    Student s[5];  // Array for 5 students
+
+    // Input for 5 students
+    for(int i = 0; i < 5; i++) {
+        cout << "\nEnter details for student " << i + 1 << endl;
+        cout << "Name: ";
+        cin >> s[i].name;
+        cout << "Score: ";
+        cin >> s[i].score;
+        cout << "Joining Year: ";
+        cin >> s[i].year;
+    }
+
+    // Display all records
+    cout << "\n--- Student Records ---\n";
+    for(int i = 0; i < 5; i++) {
+        cout << "\nStudent " << i + 1 << endl;
+        cout << "Name: " << s[i].name << endl;
+        cout << "Score: " << s[i].score << endl;
+        cout << "Year: " << s[i].year << endl;
+    }
+
+    return 0;
+}

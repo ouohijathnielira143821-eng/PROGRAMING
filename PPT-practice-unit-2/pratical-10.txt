@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+struct date {
+    int day, month, year;
+};
+
+struct student {
+    int rollno;
+    char name[20];
+    struct date doj;   // nested structure
+};
+
+int main() {
+    struct student s;
+
+    printf("Enter Roll No: ");
+    scanf("%d", &s.rollno);
+
+    printf("Enter Name: ");
+    scanf(" %[^\n]", s.name);
+
+    printf("Enter Date of Joining (dd mm yyyy): ");
+    scanf("%d %d %d", &s.doj.day, &s.doj.month, &s.doj.year);
+
+    printf("\nStudent Details:\n");
+    printf("Roll No: %d\n", s.rollno);
+    printf("Name: %s\n", s.name);
+    printf("Date of Joining: %d/%d/%d\n", s.doj.day, s.doj.month, s.doj.year);
+
+    return 0;
+}

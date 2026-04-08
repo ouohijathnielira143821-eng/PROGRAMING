@@ -1,0 +1,51 @@
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+struct Student {
+    string name;
+    float score;
+    int year;
+};
+
+// Function to print all student records
+void printStudents(Student s[], int n) {
+    for(int i = 0; i < n; i++) {
+        cout << s[i].name << " | Score: " << s[i].score 
+             << " | Year: " << s[i].year << endl;
+    }
+}
+
+// Function to print names of students with grade > 5.0
+void gradeGreaterThanFive(Student s[], int n) {
+    cout << "\nStudents with grade > 5.0:\n";
+    for(int i = 0; i < n; i++) {
+        if(s[i].score > 5.0) {
+            cout << s[i].name << endl;
+        }
+    }
+}
+
+int main() {
+    Student s[5];
+
+    // Input for 5 students
+    for(int i = 0; i < 5; i++) {
+        cout << "\nEnter details for student " << i + 1 << endl;
+        cout << "Name: ";
+        cin >> s[i].name;
+        cout << "Score: ";
+        cin >> s[i].score;
+        cout << "Joining Year: ";
+        cin >> s[i].year;
+    }
+
+    cout << "\n--- All Students ---\n";
+    printStudents(s, 5);
+
+    // Call function to print students with grade > 5.0
+    gradeGreaterThanFive(s, 5);
+
+    return 0;
+}

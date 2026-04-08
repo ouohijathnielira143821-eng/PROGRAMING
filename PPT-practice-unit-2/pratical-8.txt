@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+
+struct student {
+    int id;
+    float marks;
+};
+
+union data {
+    int id;
+    float marks;
+};
+
+int main() {
+    struct student s;
+    union data u;
+
+    s.id = 1;
+    s.marks = 90.5;
+
+    u.id = 1;
+    u.marks = 90.5; // overwrites id
+
+    printf("Structure:\n");
+    printf("ID = %d, Marks = %.2f\n", s.id, s.marks);
+
+    printf("\nUnion:\n");
+    printf("ID = %d\n", u.id);
+    printf("Marks = %.2f\n", u.marks);
+
+    printf("\nSize of Structure = %lu", sizeof(s));
+    printf("\nSize of Union = %lu", sizeof(u));
+
+    return 0;
+}
