@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+// Function to find maximum
+int maxNumber(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+// Function to find minimum
+int minNumber(int a, int b) {
+    return (a < b) ? a : b;
+}
+
+int main() {
+    int x, y;
+    cout << "Enter two numbers: ";
+    cin >> x >> y;
+
+    int (*maxPtr)(int, int) = maxNumber; // Pointer to function
+    int (*minPtr)(int, int) = minNumber;
+
+    cout << "Maximum: " << maxPtr(x, y) << endl;
+    cout << "Minimum: " << minPtr(x, y) << endl;
+
+    return 0;
+}

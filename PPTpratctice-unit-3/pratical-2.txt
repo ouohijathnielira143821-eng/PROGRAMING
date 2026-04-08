@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+const float PI = 3.14159;
+
+// Function to calculate area using pointer
+void areaOfCircle(float *radius, float *area) {
+    *area = PI * (*radius) * (*radius);
+}
+
+int main() {
+    float r, area;
+    cout << "Enter radius of circle: ";
+    cin >> r;
+
+    areaOfCircle(&r, &area);
+    cout << "Area of circle: " << area << endl;
+
+    return 0;
+}

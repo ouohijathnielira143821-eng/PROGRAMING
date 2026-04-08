@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+bool isPrime(int n) {
+    if(n < 2) return false;
+    for(int i = 2; i*i <= n; i++)
+        if(n % i == 0) return false;
+    return true;
+}
+
+int main() {
+    int N;
+    cout << "Enter number of elements: ";
+    cin >> N;
+
+    int *arr = new int[N];
+    int sum = 0;
+
+    cout << "Enter elements: ";
+    for(int i = 0; i < N; i++) {
+        cin >> arr[i];
+        if(isPrime(arr[i])) sum += arr[i];
+    }
+
+    cout << "Sum of prime numbers = " << sum << endl;
+    delete[] arr;
+    return 0;
+}

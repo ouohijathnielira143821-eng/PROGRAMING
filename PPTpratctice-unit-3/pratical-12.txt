@@ -1,0 +1,15 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+int main() {
+    string str;
+    cout << "Enter a string: ";
+    cin >> str;
+
+    for(char &c : str) c = tolower(c);
+    cout << "Lowercase: " << str << endl;
+
+    return 0;
+}
